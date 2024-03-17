@@ -37,3 +37,4 @@ void applyPriceDiscount(List<Map<String, String>> item, double percent) {
     print('${fruit.toString()}\n');
   }
 }
+//the end
