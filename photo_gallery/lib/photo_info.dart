@@ -5,10 +5,14 @@ class PhotoInfo extends StatelessWidget {
   final String locationImage;
 
   PhotoInfo(
-      {super.key, required this.nameImage, required this.locationImage});
+      //Constructor: special methods that are automatically invoked when an object is instantiated.
+      {super.key,
+      required this.nameImage,
+      required this.locationImage});
 
   //Variables:
   final Map<String, String> images = {
+    //This variable contain image related data:
     'Mountain': 'img/1.jpg',
     'Nature': 'img/2.jpg',
     'Indoor Dark': 'img/3.jpg',
@@ -55,9 +59,14 @@ class PhotoInfo extends StatelessWidget {
                   builder: (context) {
                     return const AlertDialog(
                       backgroundColor: Color(0xff2CAB00),
-                      title: Text('Info:', style: TextStyle(color: Colors.white),),
+                      title: Text(
+                        'Info:',
+                        style: TextStyle(color: Colors.white),
+                      ),
                       content: Text(
-                        'This is a assignment project for exam week two.', style: TextStyle(color: Colors.white),),
+                        'This is a assignment project for exam week two.',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     );
                   },
                 );
@@ -75,6 +84,7 @@ class PhotoInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    //Image card
                     Container(
                       height: MediaQuery.sizeOf(context).width - 95,
                       width: MediaQuery.sizeOf(context).width - 20,
@@ -82,6 +92,7 @@ class PhotoInfo extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                           image: DecorationImage(
                               image: AssetImage(locationImage),
+                              //Assigning the data that we taken from the previous page.
                               fit: BoxFit.cover),
                           boxShadow: const [
                             BoxShadow(
@@ -92,9 +103,11 @@ class PhotoInfo extends StatelessWidget {
                           ]),
                     ),
                     Padding(
+                      //Image name.
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        nameImage,
+                        nameImage.toUpperCase(),
+                        //Assigning the data that we taken from the previous page.
                         style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w400),
                       ),
@@ -104,10 +117,13 @@ class PhotoInfo extends StatelessWidget {
                       child: Text(
                         'In the quiet hush of dawn, where the first light kisses the earth, photography comes alive. Each click of the shutter captures a fleeting moment, immortalizing the dance of shadows and light.',
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w400,),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                     GestureDetector(
+                      //See More button.
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -116,16 +132,14 @@ class PhotoInfo extends StatelessWidget {
                         height: 40,
                         decoration: BoxDecoration(
                             color: const Color(0xff2CAB00),
-                          borderRadius: BorderRadius.circular(360),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(-1, 10),
-                              spreadRadius: 0,
-                              blurRadius: 17
-                            )
-                          ]
-                        ),
+                            borderRadius: BorderRadius.circular(360),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(-1, 10),
+                                  spreadRadius: 0,
+                                  blurRadius: 17)
+                            ]),
                         child: const Center(
                           child: Text(
                             'See More',
@@ -138,14 +152,19 @@ class PhotoInfo extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10, top: 18, bottom: 18),
-                      child: Text('Suggestions',style: TextStyle(color: Color(0xff2CAB00),fontSize: 18),),
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 18, bottom: 18),
+                      child: Text(
+                        'Suggestions',
+                        style:
+                            TextStyle(color: Color(0xff2CAB00), fontSize: 18),
+                      ),
                     ),
                     GridView.builder(
                         shrinkWrap: true,
                         primary: false,
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 22,
                           crossAxisSpacing: 22,
@@ -160,8 +179,7 @@ class PhotoInfo extends StatelessWidget {
                                   builder: (context) {
                                     return PhotoInfo(
                                       nameImage: images.keys.toList()[i],
-                                      locationImage:
-                                      images.values.toList()[i],
+                                      locationImage: images.values.toList()[i],
                                     );
                                   },
                                 ),
@@ -182,7 +200,7 @@ class PhotoInfo extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(25),
                                 image: DecorationImage(
                                     image:
-                                    AssetImage(images.values.toList()[i]),
+                                        AssetImage(images.values.toList()[i]),
                                     fit: BoxFit.cover),
                               ),
                               child: Column(
@@ -214,7 +232,7 @@ class PhotoInfo extends StatelessWidget {
                         }),
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(top:18,bottom: 7),
+                        padding: const EdgeInsets.only(top: 18, bottom: 7),
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width / 2.7,
                           height: 3,
@@ -237,8 +255,8 @@ class PhotoInfo extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          height: MediaQuery.sizeOf(context).width /3.3,
-                          width: MediaQuery.sizeOf(context).width / 2,
+                          height: MediaQuery.sizeOf(context).width / 3.3,
+                          width: MediaQuery.sizeOf(context).width / 2.7,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
                               image: DecorationImage(
@@ -258,60 +276,74 @@ class PhotoInfo extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(2),
                               child: Text(
-                                nameImage,
+                                nameImage.toUpperCase(),
                                 style: const TextStyle(
                                     fontSize: 24, fontWeight: FontWeight.w400),
                               ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10, right: 10, bottom: 18),
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 18),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                  'In the quiet hush of dawn, where the first light',
-                                  style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.w400,),
-                                ),
-                                  Text(
-                                    'light kisses the earth, photography comes alive.',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                  Text(
-                                    'Each click of the shutter captures a fleeting',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                  Text(
-                                    'moment, immortalizing the dance of shadows and',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                  Text(
-                                    'light. Through the lens, ordinary scenes transform',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                  Text(
-                                    'into extraordinary tapestries of emotion and',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                  Text(
-                                    'beauty, testament to the artistry of the human eye.',
-                                    style: TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.w400,),
-                                  ),
-                                ]
-                              ),
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'In the quiet hush of dawn, where the first light',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'light kisses the earth, photography comes alive.',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Each click of the shutter captures a fleeting',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'moment, immortalizing the dance of shadows and',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'light. Through the lens, ordinary scenes transform',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'into extraordinary tapestries of emotion and',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'beauty, testament to the artistry of the human eye.',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ]),
                             ),
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
                               },
                               child: Container(
-                                width: MediaQuery.sizeOf(context).width /2.4,
+                                width: MediaQuery.sizeOf(context).width / 2.4,
                                 height: 40,
                                 decoration: BoxDecoration(
                                     color: const Color(0xff2CAB00),
@@ -321,10 +353,8 @@ class PhotoInfo extends StatelessWidget {
                                           color: Colors.grey,
                                           offset: Offset(-1, 10),
                                           spreadRadius: 0,
-                                          blurRadius: 17
-                                      )
-                                    ]
-                                ),
+                                          blurRadius: 17)
+                                    ]),
                                 child: const Center(
                                   child: Text(
                                     'See More',
@@ -341,14 +371,19 @@ class PhotoInfo extends StatelessWidget {
                       ],
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10, top: 18, bottom: 18),
-                      child: Text('Suggestions',style: TextStyle(color: Color(0xff2CAB00),fontSize: 18),),
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 18, bottom: 18),
+                      child: Text(
+                        'Suggestions',
+                        style:
+                            TextStyle(color: Color(0xff2CAB00), fontSize: 18),
+                      ),
                     ),
                     GridView.builder(
                         shrinkWrap: true,
                         primary: false,
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           mainAxisSpacing: 22,
                           crossAxisSpacing: 22,
@@ -363,8 +398,7 @@ class PhotoInfo extends StatelessWidget {
                                   builder: (context) {
                                     return PhotoInfo(
                                       nameImage: images.keys.toList()[i],
-                                      locationImage:
-                                      images.values.toList()[i],
+                                      locationImage: images.values.toList()[i],
                                     );
                                   },
                                 ),
@@ -385,7 +419,7 @@ class PhotoInfo extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(25),
                                 image: DecorationImage(
                                     image:
-                                    AssetImage(images.values.toList()[i]),
+                                        AssetImage(images.values.toList()[i]),
                                     fit: BoxFit.cover),
                               ),
                               child: Column(
@@ -417,7 +451,7 @@ class PhotoInfo extends StatelessWidget {
                         }),
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(top:18,bottom: 7),
+                        padding: const EdgeInsets.only(top: 18, bottom: 7),
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width / 2.7,
                           height: 3,
