@@ -80,13 +80,76 @@ class _InventoryScreenState extends State<InventoryScreen> {
       setState(() {
         _cardOneItemAmount++;
       },);
+    if (_cardOneItemAmount%5 ==0){
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
+          title: const Center(child: Text('Congratulations!')),
+          content: Text('You have added total $_cardOneItemAmount Hoodie on your bag!', textAlign: TextAlign.center,),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.sizeOf(context).width / 5),
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white),
+              child: const Text('OKAY'),),
+          ],
+        );
+      },);
+    }
     }else if(number==2){
       setState(() {
         _cardTwoItemAmount++;
+        if (_cardTwoItemAmount%5 ==0){
+          showDialog(context: context, builder: (context){
+            return AlertDialog(
+              actionsAlignment: MainAxisAlignment.center,
+              title: const Center(child: Text('Congratulations!')),
+              content: Text('You have added total $_cardTwoItemAmount Blazer on your bag!', textAlign: TextAlign.center,),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width / 5),
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white),
+                  child: const Text('OKAY'),),
+              ],
+            );
+          },);
+        }
       },);
     }else if(number==3){
       setState(() {
         _cardThreeItemAmount++;
+        if (_cardThreeItemAmount%5 ==0){
+          showDialog(context: context, builder: (context){
+            return AlertDialog(
+              actionsAlignment: MainAxisAlignment.center,
+              title: const Center(child: Text('Congratulations!')),
+              content: Text('You have added total $_cardThreeItemAmount T-Shirt on your bag!', textAlign: TextAlign.center,),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width / 5),
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white),
+                  child: const Text('OKAY'),),
+              ],
+            );
+          },);
+        }
       });
     }
   }
@@ -112,13 +175,31 @@ class _InventoryScreenState extends State<InventoryScreen> {
     return Padding(
               padding: const EdgeInsets.only(bottom: 15),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        actionsAlignment: MainAxisAlignment.center,
+                        title: const Center(child: Text('Congratulations!!')),
+                        content: const Text('You have got some awesome items, at a reasonable price!', textAlign: TextAlign.center,),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                foregroundColor: Colors.white),
+                            child: Text('PAY ONLY: ${(_cardOneItemAmount*_cardOneAmount)+(_cardTwoItemAmount*_cardTwoAmount)+(_cardThreeItemAmount*_cardThreeAmount)}\$'),),
+                        ],
+                      );
+                    },);
+                  },
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                           horizontal: MediaQuery.sizeOf(context).width / 2.8),
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white),
-                  child: const Text('CHECK OUT')),
+                  child: const Text('CHECK OUT'),),
             );
   }
 
@@ -127,14 +208,14 @@ class _InventoryScreenState extends State<InventoryScreen> {
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Total amount:',style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w500),), Text('${(_cardOneItemAmount*_cardOneAmount)+(_cardTwoItemAmount*_cardTwoAmount)+(_cardThreeItemAmount*_cardThreeAmount)}\$', style: TextStyle(fontWeight: FontWeight.w600),)],
+                children: [Text('Total amount:',style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w500),), Text('${(_cardOneItemAmount*_cardOneAmount)+(_cardTwoItemAmount*_cardTwoAmount)+(_cardThreeItemAmount*_cardThreeAmount)}\$', style: const TextStyle(fontWeight: FontWeight.w600),)],
               ),
             );
   }
 
   Padding _myBagText() {
-    return Padding(
-                padding: const EdgeInsets.only(left: 15),
+    return const Padding(
+                padding: EdgeInsets.only(left: 15),
                 child: Text(
                   'My Bag',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
@@ -144,14 +225,14 @@ class _InventoryScreenState extends State<InventoryScreen> {
 
   AppBar _inventoryAppBar() {
     return AppBar(
-      title: Text(
+      title: const Text(
         'Inventory',
         style:
             TextStyle(fontWeight: FontWeight.w600,),
       ),
-      actions: [
+      actions: const [
         Padding(
-          padding: const EdgeInsets.only(right: 14),
+          padding: EdgeInsets.only(right: 14),
           child: Icon(
             Icons.search_rounded,
           ),
@@ -174,9 +255,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
       padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
       child: Container(
         decoration: BoxDecoration(
-            color: Color(0xffffffff),
+            color: const Color(0xffffffff),
             borderRadius: BorderRadius.circular(7),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                   color: Colors.grey,
                   spreadRadius: 5,
@@ -201,6 +282,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,7 +291,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                           padding: const EdgeInsets.only(left: 10, top: 5),
                           child: Text(
                             itemName,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                         ),
@@ -226,7 +308,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                               ),
                               Text(
                                 itemColor,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
@@ -241,7 +323,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                               ),
                               Text(
                                 itemSize,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
@@ -255,11 +337,11 @@ class _InventoryScreenState extends State<InventoryScreen> {
                     Row(
                       children: [
                         IconButton(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           onPressed: (){
                             _sub(cardNumberForFunction);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.horizontal_rule,
                           ),
                         ),
@@ -267,11 +349,11 @@ class _InventoryScreenState extends State<InventoryScreen> {
                           cardNumber.toString(),
                         ),
                         IconButton(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           onPressed: () {
                             _add(cardNumberForFunction);
                           },
-                          icon: Icon(Icons.add),
+                          icon: const Icon(Icons.add),
                         )
                       ],
                     )
@@ -283,7 +365,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                    onPressed: () {}, icon: Icon(Icons.more_vert_rounded)),
+                    onPressed: () {}, icon: const Icon(Icons.more_vert_rounded)),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(itemPrice),
