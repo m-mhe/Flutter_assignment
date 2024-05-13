@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:assignment_three/inventory.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
 
@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Inventory',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: Color(0xffF6F6F6),
-          foregroundColor: Colors.grey[800]
-        ),
-        scaffoldBackgroundColor: Color(0xffF6F6F6),
+            backgroundColor: const Color(0xffF6F6F6),
+            foregroundColor: Colors.grey[800]),
+        scaffoldBackgroundColor: const Color(0xffF6F6F6),
       ),
-      home: InventoryScreen(),
+      home: const InventoryScreen(),
     );
   }
 }
