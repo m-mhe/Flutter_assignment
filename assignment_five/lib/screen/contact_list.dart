@@ -25,6 +25,8 @@ class _ContactListState extends State<ContactList> {
         child: Column(
           children: [
             TextField(
+              style: const TextStyle(
+                  color: Color(0xff667C89), fontWeight: FontWeight.w500),
               controller: _tEcName,
               decoration: const InputDecoration(hintText: 'Name'),
             ),
@@ -32,6 +34,8 @@ class _ContactListState extends State<ContactList> {
               height: 10,
             ),
             TextField(
+              style: const TextStyle(
+                  color: Color(0xff667C89), fontWeight: FontWeight.w500),
               maxLength: 11,
               controller: _tEcPhoneNumber,
               keyboardType: TextInputType.number,
@@ -63,6 +67,8 @@ class _ContactListState extends State<ContactList> {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(17)),
                                   backgroundColor: const Color(0xff667C89),
                                   title: const Text(
                                     "Warning!",
